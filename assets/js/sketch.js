@@ -1,24 +1,30 @@
 let playing = false;
-let fingers;
-let button;
+let movie;
 
-let videoFile = "assets/img/volume-lerp-test.mp4";
+// CONSTS
+const videoFile = "assets/img/4x-resolve-music-sq.mp4";
+const frameKeyword = "frame";
 
 function setup() {
-  // specify multiple formats for different browsers
-  fingers = createVideo(["assets/img/volume-lerp-test.mp4", videoFile]);
-  button = createButton('play');
-  button.mousePressed(toggleVid); // attach button listener
+  movie = createVideo([videoFile]);
+
+  if (isStaticFrame()){
+
+  	secondsF = movie.duration();
+  	console.log(secondsF);
+  	if (secondsF > 0) {
+      let randomTime = random(floor(secondsF));
+      movie.time(randomTime);
+    }
+
+  } else {
+  	console.log("VIDEO");
+  	movie.play().loop().time(0);
+  }
+
 }
 
-// plays or pauses the video depending on current state
-function toggleVid() {
-  if (playing) {
-    fingers.pause();
-    button.html('play');
-  } else {
-    fingers.loop();
-    button.html('pause');
-  }
-  playing = !playing;
+function isStaticFrame(){
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(frameKeyword) === "";
 }
