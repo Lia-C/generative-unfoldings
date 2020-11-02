@@ -8,15 +8,16 @@ const frameKeyword = "frame";
 
 function setup() {
   movie = createVideo([videoFile], vidLoad);
-  movie.size(AUTO, windowHeight).center("horizontal");
 }
 
 function vidLoad() {
+  movie.size(AUTO, windowHeight).center("horizontal");
   if (!isStaticFrame()){
-    // movie.play();
-    button = createButton('play');
+    button = createButton('play')
+      .addClass('p5button')
+      .position(0, 0);
     button.mousePressed(toggleVid); // attach button listener
-
+    button.center("horizontal");
   } else {
 
     // STATIC FRAME
@@ -31,6 +32,7 @@ function vidLoad() {
 
 // plays or pauses the video depending on current state
 function toggleVid() {
+
   if (playing) {
     movie.pause();
     button.html('play');
@@ -49,4 +51,5 @@ function isStaticFrame(){
 
 function windowResized() {
   movie.size(AUTO, windowHeight).center("horizontal");
+  button.center("horizontal");
 }
