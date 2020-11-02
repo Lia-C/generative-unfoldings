@@ -8,7 +8,7 @@ canvas {
 }
 
 
-.p5button {
+button {
 color: #494949 !important;
 text-transform: uppercase;
 text-decoration: none;
@@ -19,7 +19,7 @@ display: inline-block;
 transition: all 0.4s ease 0s;
 }
 
-.p5button:hover {
+button:hover {
 color: #ffffff !important;
 background: #f6b93b;
 border-color: #f6b93b !important;
