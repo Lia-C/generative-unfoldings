@@ -14,7 +14,6 @@ function vidLoad() {
   movie.size(AUTO, windowHeight).center("horizontal");
   if (!isStaticFrame()){
     button = createButton('play')
-      .addClass('p5button')
       .position(0, 0);
     button.mousePressed(toggleVid); // attach button listener
     button.center("horizontal");
